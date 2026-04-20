@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ignacio Brambati | Rehabilitación de Rodilla</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --primary: #1B3A6B;
+      --secondary: #2E9CCA;
+      --white: #FFFFFF;
+      --bg-alt: #F4F8FB;
+      --text: #1A1A2E;
+      --shadow: 0 4px 20px rgba(27, 58, 107, 0.1);
+      --shadow-hover: 0 8px 30px rgba(27, 58, 107, 0.18);
+      --radius: 12px;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--text);
+      line-height: 1.7;
+      background: var(--white);
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, h4 {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1140px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(27, 58, 107, 0.06);
+      transition: box-shadow 0.3s;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 20px rgba(27, 58, 107, 0.1);
+    }
+
+    .navbar .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .navbar__logo {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .navbar__logo i {
+      color: var(--secondary);
+      font-size: 1.4rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      padding: 14px 32px;
+      border-radius: 50px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: center;
+    }
+
+    .btn--primary {
+      background: var(--secondary);
+      color: var(--white);
+      box-shadow: 0 4px 15px rgba(46, 156, 202, 0.35);
+    }
+
+    .btn--primary:hover {
+      background: #2589b4;
+      box-shadow: 0 6px 25px rgba(46, 156, 202, 0.5);
+      transform: translateY(-2px);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--secondary);
+      border: 2px solid var(--secondary);
+    }
+
+    .btn--outline:hover {
+      background: var(--secondary);
+      color: var(--white);
+      transform: translateY(-2px);
+    }
+
+    .btn--white {
+      background: var(--white);
+      color: var(--primary);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .btn--white:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    .btn--nav {
+      padding: 10px 24px;
+      font-size: 0.85rem;
+    }
+
+    .btn--large {
+      padding: 18px 44px;
+      font-size: 1.05rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* ── Section shared ── */
+    .section {
+      padding: 100px 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section__label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      color: var(--secondary);
+      margin-bottom: 16px;
+    }
+
+    .section__title {
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .section__subtitle {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 680px;
+      margin-bottom: 48px;
+    }
+
+    .section__center {
+      text-align: center;
+    }
+
+    .section__center .section__subtitle {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .divider {
+      width: 60px;
+      height: 4px;
+      background: var(--secondary);
+      border-radius: 4px;
+      margin-bottom: 32px;
+    }
+
+    .section__center .divider {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Dark section overrides */
+    .section--dark {
+      background: var(--primary);
+      color: var(--white);
+    }
+
+    .section--dark .section__title {
+      color: var(--white);
+    }
+
+    .section--dark .section__label {
+      color: var(--secondary);
+    }
+
+    .section--dark .divider {
+      background: var(--secondary);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      padding-top: 220px;
+      padding-bottom: 180px;
+      background: linear-gradient(135deg, #1B3A6B 0%, #2E9CCA 100%);
+      position: relative;
+      overflow: hidden;
+      color: var(--white);
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -150px;
+      right: -150px;
+      width: 500px;
+      height: 500px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -200px;
+      left: -100px;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .hero .container {
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero__content {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .hero__tag {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.12);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 0.85rem;
+      padding: 10px 24px;
+      border-radius: 50px;
+      margin-bottom: 32px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero__title {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      margin-bottom: 28px;
+    }
+
+    .hero__title span {
+      color: #7dd3fc;
+    }
+
+    .hero__lead {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: clamp(1.15rem, 2vw, 1.35rem);
+      color: rgba(255, 255, 255, 0.92);
+      margin-bottom: 24px;
+      max-width: 760px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero__text {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 48px;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* Hero decorative SVG */
+    .hero__deco {
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 100%;
+      z-index: 2;
+    }
+
+    /* ── Problems section ── */
+    .section--problems {
+      background: #F4F8FB;
+      position: relative;
+    }
+
+    .section--problems .deco-geo {
+      position: absolute;
+      top: 40px;
+      right: -60px;
+      width: 300px;
+      height: 300px;
+      opacity: 0.07;
+    }
+
+    .section--problems .deco-geo-2 {
+      position: absolute;
+      bottom: 40px;
+      left: -40px;
+      width: 200px;
+      height: 200px;
+      opacity: 0.05;
+    }
+
+    .problems__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+
+    .problem-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      transition: all 0.3s ease;
+    }
+
+    .problem-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .problem-card__icon {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      background: rgba(46, 156, 202, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+      font-size: 1.1rem;
+    }
+
+    .problem-card__text {
+      font-size: 1rem;
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    /* ── Vehicle (revelation) — dark ── */
+    .section--vehicle {
+      background: var(--primary);
+      color: var(--white);
+      text-align: center;
+      position: relative;
+    }
+
+    .section--vehicle .deco-wave {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    .vehicle__box {
+      max-width: 760px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .vehicle__highlight {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: clamp(1.3rem, 3vw, 1.6rem);
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+
+    .vehicle__text {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.8);
+      margin-bottom: 40px;
+      line-height: 1.8;
+    }
+
+    .vehicle__text strong {
+      color: var(--secondary);
+    }
+
+    /* ── Steps ── */
+    .section--steps {
+      background: var(--primary);
+      color: var(--white);
+      position: relative;
+    }
+
+    .section--steps .section__title {
+      color: var(--white);
+    }
+
+    .section--steps .section__label {
+      color: var(--secondary);
+    }
+
+    .section--steps .divider {
+      background: var(--secondary);
+    }
+
+    .steps__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+
+    .step-card {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      text-align: center;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .step-card:hover {
+      transform: translateY(-6px);
+      background: rgba(255, 255, 255, 0.12);
+    }
+
+    .step-card__number {
+      position: absolute;
+      top: -18px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 36px;
+      height: 36px;
+      background: var(--secondary);
+      color: var(--white);
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .step-card__icon {
+      width: 64px;
+      height: 64px;
+      margin: 16px auto 24px;
+      background: rgba(46, 156, 202, 0.2);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--secondary);
+      font-size: 1.5rem;
+    }
+
+    .step-card__title {
+      font-size: 1.15rem;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .step-card__text {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+    }
+
+    /* Decorative diagonal lines */
+    .deco-lines {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 300px;
+      height: 300px;
+      opacity: 0.06;
+      z-index: 0;
+    }
+
+    /* ── About / Sobre mí ── */
+    .section--about {
+      background: var(--white);
+      position: relative;
+    }
+
+    .section--about .deco-corner {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 250px;
+      height: 250px;
+      opacity: 0.06;
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 400px 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about__photo {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-hover);
+      width: 100%;
+      height: auto;
+    }
+
+    .about__credentials {
+      list-style: none;
+      margin: 28px 0;
+    }
+
+    .about__credentials li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+
+    .about__credentials li i {
+      color: var(--secondary);
+      margin-top: 4px;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+
+    .about__badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, rgba(46, 156, 202, 0.1), rgba(27, 58, 107, 0.08));
+      border: 1px solid rgba(46, 156, 202, 0.25);
+      border-radius: 50px;
+      padding: 14px 28px;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--primary);
+      margin-top: 8px;
+    }
+
+    .about__badge i {
+      color: var(--secondary);
+      font-size: 1.2rem;
+    }
+
+    /* ── Testimonials ── */
+    .section--testimonials {
+      background: linear-gradient(180deg, #EBF4FA 0%, #F4F8FB 100%);
+      position: relative;
+    }
+
+    .section--testimonials .deco-circles {
+      position: absolute;
+      top: 60px;
+      left: -40px;
+      width: 200px;
+      height: 200px;
+      opacity: 0.08;
+    }
+
+    .testimonials__list {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+      margin-top: 64px;
+    }
+
+    .testimonial-block {
+      display: grid;
+      grid-template-columns: 45% 55%;
+      background: var(--white);
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(27, 58, 107, 0.12);
+      transition: all 0.3s ease;
+      text-align: left;
+    }
+
+    .testimonial-block:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 50px rgba(27, 58, 107, 0.18);
+    }
+
+    .testimonial-block--reverse {
+      grid-template-columns: 55% 45%;
+    }
+
+    .testimonial-block--reverse .testimonial-block__photo {
+      order: 2;
+    }
+
+    .testimonial-block--reverse .testimonial-block__body {
+      order: 1;
+    }
+
+    .testimonial-block__photo {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+    }
+
+    .testimonial-block__body {
+      padding: 48px 56px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .testimonial-block__name {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    .testimonial-block__injury {
+      font-size: 0.9rem;
+      color: var(--secondary);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 20px;
+    }
+
+    .testimonial-block__text {
+      font-size: 1.05rem;
+      color: #444;
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+
+    .testimonial-block__stars {
+      color: #f0a500;
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+    /* ── FAQ — dark ── */
+    .section--faq {
+      background: var(--primary);
+      color: var(--white);
+      position: relative;
+    }
+
+    .section--faq .section__title {
+      color: var(--white);
+    }
+
+    .section--faq .section__label {
+      color: var(--secondary);
+    }
+
+    .section--faq .divider {
+      background: var(--secondary);
+    }
+
+    .faq__list {
+      max-width: 760px;
+      margin: 48px auto 40px;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+    }
+
+    .faq-item__question {
+      width: 100%;
+      background: none;
+      border: none;
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--white);
+      text-align: left;
+      padding: 24px 0;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .faq-item__question i {
+      color: var(--secondary);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.active .faq-item__question i {
+      transform: rotate(180deg);
+    }
+
+    .faq-item__answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.3s ease;
+    }
+
+    .faq-item.active .faq-item__answer {
+      max-height: 300px;
+      padding-bottom: 24px;
+    }
+
+    .faq-item__answer p {
+      font-size: 0.95rem;
+      color: rgba(255, 255, 255, 0.75);
+      line-height: 1.7;
+    }
+
+    /* ── Closing ── */
+    .section--closing {
+      background: linear-gradient(135deg, #2E9CCA 0%, #1B3A6B 100%);
+      color: var(--white);
+      position: relative;
+    }
+
+    .section--closing .section__title {
+      color: var(--white);
+    }
+
+    .section--closing .section__label {
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .section--closing .divider {
+      background: rgba(255, 255, 255, 0.5);
+    }
+
+    .closing__content {
+      max-width: 780px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .closing__text {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 24px;
+      line-height: 1.8;
+    }
+
+    .closing__text strong {
+      color: var(--white);
+    }
+
+    .closing__options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin: 48px 0;
+    }
+
+    .option-card {
+      padding: 32px;
+      border-radius: var(--radius);
+      text-align: center;
+    }
+
+    .option-card--a {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(239, 68, 68, 0.5);
+    }
+
+    .option-card--b {
+      background: rgba(255, 255, 255, 0.1);
+      border: 2px solid rgba(34, 197, 94, 0.5);
+    }
+
+    .option-card__label {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    .option-card--a .option-card__label {
+      color: #fca5a5;
+    }
+
+    .option-card--b .option-card__label {
+      color: #86efac;
+    }
+
+    .option-card__text {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .closing__urgency {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: var(--white);
+      border-radius: var(--radius);
+      padding: 36px;
+      text-align: center;
+      margin: 48px 0 40px;
+    }
+
+    .closing__urgency p {
+      font-size: 1rem;
+      opacity: 0.9;
+      margin-bottom: 8px;
+    }
+
+    .closing__urgency strong {
+      color: #7dd3fc;
+    }
+
+    /* ── Booking / Calendar ── */
+    .section--booking {
+      background: #F4F8FB;
+      position: relative;
+    }
+
+    .booking__iframe-wrap {
+      max-width: 800px;
+      margin: 40px auto 0;
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      background: var(--white);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      background: var(--primary);
+      color: rgba(255, 255, 255, 0.7);
+      text-align: center;
+      padding: 40px 0;
+      font-size: 0.85rem;
+    }
+
+    /* ── Animations ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 992px) {
+      .steps__grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+      .testimonial-block,
+      .testimonial-block--reverse {
+        grid-template-columns: 1fr;
+      }
+      .testimonial-block--reverse .testimonial-block__photo {
+        order: 0;
+      }
+      .testimonial-block--reverse .testimonial-block__body {
+        order: 0;
+      }
+      .testimonial-block__photo {
+        min-height: 240px;
+        max-height: 320px;
+      }
+      .testimonial-block__body {
+        padding: 36px 32px;
+      }
+      .problems__grid {
+        grid-template-columns: 1fr;
+      }
+      .closing__options {
+        grid-template-columns: 1fr;
+      }
+      .about__grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 40px;
+      }
+      .about__photo {
+        max-width: 320px;
+        margin: 0 auto;
+      }
+      .about__credentials li {
+        justify-content: center;
+      }
+      .about__badge {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 600px) {
+      .section {
+        padding: 72px 0;
+      }
+      .hero {
+        padding-top: 140px;
+        padding-bottom: 110px;
+      }
+      .btn--large {
+        padding: 16px 32px;
+        font-size: 0.95rem;
+      }
+      .navbar .container {
+        height: 60px;
+      }
+      .navbar__logo {
+        font-size: 1.05rem;
+      }
+      .btn--nav {
+        padding: 8px 18px;
+        font-size: 0.8rem;
+      }
+      .about__grid {
+        gap: 30px;
+      }
+      .about__photo {
+        max-width: 280px;
+      }
+      .testimonials__list {
+        gap: 40px;
+      }
+      .testimonial-block__body {
+        padding: 28px 24px;
+      }
+      .testimonial-block__name {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="#" class="navbar__logo">
+        <i class="fas fa-shield-halved"></i>
+        Ignacio Brambati
+      </a>
+      <a href="#booking" class="btn btn--primary btn--nav">Agendar Llamada</a>
+    </div>
+  </nav>
+
+  <!-- S1 Hero — gradient diagonal #1B3A6B → #2E9CCA -->
+  <section class="hero">
+    <!-- Decorative wave bottom -->
+    <svg class="hero__deco" viewBox="0 0 1440 80" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0 40C240 80 480 0 720 40C960 80 1200 0 1440 40V80H0V40Z" fill="#F4F8FB"/>
+    </svg>
+    <div class="container">
+      <div class="hero__content">
+        <span class="hero__tag"><i class="fas fa-bolt"></i>&nbsp; Deportistas con lesión de rodilla</span>
+        <h1 class="hero__title">Te ayudo a volver a tu deporte después de tu <span>lesión de rodilla</span> de forma segura.</h1>
+        <p class="hero__lead">Con el método que ayuda a deportistas a volver a nivel competitivo en menos de 1 año.</p>
+        <p class="hero__text">Si eres deportista, sufriste una lesión de rodilla y te interesa recuperarte para volver a jugar sin riesgo de relesión, entonces toca el botón debajo para agendar tu sesión de diagnóstico.<br><br>En esta llamada vamos a sentarnos a analizar tu caso para darte claridad en qué está fallando, el plan de acción para rehabilitarte y opcionalmente ver si podemos trabajar juntos para ayudarte a implementar ese plan.</p>
+        <a href="#booking" class="btn btn--primary btn--large">QUIERO AGENDAR MI LLAMADA <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- S2 Problems — #F4F8FB with geometric deco -->
+  <section class="section section--problems">
+    <!-- Geometric decorative elements -->
+    <svg class="deco-geo" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="50" y="50" width="200" height="200" rx="20" stroke="#2E9CCA" stroke-width="3" fill="none"/>
+      <rect x="90" y="90" width="120" height="120" rx="12" stroke="#2E9CCA" stroke-width="2" fill="none"/>
+      <circle cx="150" cy="150" r="40" stroke="#2E9CCA" stroke-width="2" fill="none"/>
+    </svg>
+    <svg class="deco-geo-2" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <polygon points="100,10 190,190 10,190" stroke="#1B3A6B" stroke-width="2" fill="none"/>
+      <circle cx="100" cy="130" r="50" stroke="#2E9CCA" stroke-width="2" fill="none"/>
+    </svg>
+    <div class="container">
+      <div class="section__center reveal">
+        <p class="section__label">Identifica tu situación</p>
+        <div class="divider"></div>
+        <h2 class="section__title">¿Te ocurre algo de esto?</h2>
+      </div>
+      <div class="problems__grid">
+        <div class="problem-card reveal">
+          <div class="problem-card__icon"><i class="fas fa-ban"></i></div>
+          <p class="problem-card__text">No sientes la confianza necesaria para volver al deporte.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-card__icon"><i class="fas fa-triangle-exclamation"></i></div>
+          <p class="problem-card__text">Has hecho rehabilitación pero sabes que tu rodilla aún sufre riesgo de lesión.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-card__icon"><i class="fas fa-chart-line"></i></div>
+          <p class="problem-card__text">No tienes la capacidad de recuperar tu nivel competitivo sin comprometer tu rodilla.</p>
+        </div>
+        <div class="problem-card reveal">
+          <div class="problem-card__icon"><i class="fas fa-face-frown"></i></div>
+          <p class="problem-card__text">Tienes miedo de rendir bien y que eso te cueste más meses fuera.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S3 Vehicle + Steps — dark #1B3A6B -->
+  <section class="section section--steps">
+    <!-- Decorative diagonal lines -->
+    <svg class="deco-lines" viewBox="0 0 300 300" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <line x1="0" y1="300" x2="300" y2="0" stroke="white" stroke-width="1.5"/>
+      <line x1="50" y1="300" x2="300" y2="50" stroke="white" stroke-width="1"/>
+      <line x1="100" y1="300" x2="300" y2="100" stroke="white" stroke-width="0.8"/>
+      <line x1="150" y1="300" x2="300" y2="150" stroke="white" stroke-width="0.6"/>
+      <line x1="200" y1="300" x2="300" y2="200" stroke="white" stroke-width="0.5"/>
+    </svg>
+    <div class="container section__center">
+      <!-- Vehicle revelation -->
+      <div class="vehicle__box reveal" style="margin-bottom:64px;">
+        <p class="section__label">La verdad sobre tu situación</p>
+        <div class="divider" style="margin:0 auto 32px;"></div>
+        <p class="vehicle__highlight">Si alguno de esos problemas resuenan contigo, entonces tengo buenas noticias.</p>
+        <p class="vehicle__text">Porque ninguno de esos es el verdadero problema.<br><br><strong>El problema es que no estás implementando una rehabilitación integral</strong> que te permita recuperarte física y mentalmente. Para así volver al deporte sin riesgo de volver a lesionarte.</p>
+        <a href="#booking" class="btn btn--white btn--large">QUIERO EVALUAR MI CASO <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <!-- Steps -->
+      <div class="reveal">
+        <p class="section__label">Nuestro método</p>
+        <div class="divider"></div>
+        <h2 class="section__title">Así es cómo trabajamos</h2>
+      </div>
+      <div class="steps__grid">
+        <div class="step-card reveal">
+          <span class="step-card__number">1</span>
+          <div class="step-card__icon"><i class="fas fa-stethoscope"></i></div>
+          <h3 class="step-card__title">Diagnóstico Inicial</h3>
+          <p class="step-card__text">Hacemos un análisis 360° de tu situación actual para entender a fondo cuál sería tu mejor plan de acción.</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-card__number">2</span>
+          <div class="step-card__icon"><i class="fas fa-clipboard-list"></i></div>
+          <h3 class="step-card__title">Desarrollo del Plan</h3>
+          <p class="step-card__text">Armamos un plan integral de 5 a 9 meses que pueda recuperar tu rodilla sin riesgo de relesión.</p>
+        </div>
+        <div class="step-card reveal">
+          <span class="step-card__number">3</span>
+          <div class="step-card__icon"><i class="fas fa-comments"></i></div>
+          <h3 class="step-card__title">Seguimiento 1-1</h3>
+          <p class="step-card__text">Tendrás acceso a mi WhatsApp + reuniones individuales + plataforma individual para maximizar tu progreso.</p>
+        </div>
+      </div>
+      <a href="#booking" class="btn btn--white btn--large reveal">QUIERO AGENDAR MI LLAMADA <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </section>
+
+  <!-- S4 Sobre Ignacio — white with corner deco -->
+  <section class="section section--about" id="sobre-mi">
+    <!-- Decorative corner element -->
+    <svg class="deco-corner" viewBox="0 0 250 250" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="250" cy="0" r="180" stroke="#2E9CCA" stroke-width="2" fill="none"/>
+      <circle cx="250" cy="0" r="120" stroke="#2E9CCA" stroke-width="1.5" fill="none"/>
+      <circle cx="250" cy="0" r="60" stroke="#2E9CCA" stroke-width="1" fill="none"/>
+    </svg>
+    <div class="container">
+      <div class="about__grid">
+        <div class="reveal">
+          <img src="https://placehold.co/400x500?text=Foto+Ignacio" alt="Ignacio Brambati" class="about__photo">
+        </div>
+        <div class="reveal">
+          <p class="section__label">Conocé al especialista</p>
+          <div class="divider"></div>
+          <h2 class="section__title">Sobre Ignacio</h2>
+          <ul class="about__credentials">
+            <li>
+              <i class="fas fa-circle-check"></i>
+              <span>Lic. en Kinesiología y Fisioterapia (UNC)</span>
+            </li>
+            <li>
+              <i class="fas fa-circle-check"></i>
+              <span>Especialista en Entrenamiento de Fuerza y Acondicionamiento Físico (NSCA - EE.UU.)</span>
+            </li>
+            <li>
+              <i class="fas fa-circle-check"></i>
+              <span>Diplomado en Evaluación y Prescripción del Entrenamiento Físico (UCC)</span>
+            </li>
+          </ul>
+          <div class="about__badge">
+            <i class="fas fa-award"></i>
+            +6 años acompañando personas a recuperarse y volver a sus deportes
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- S5 Testimonials — gradient #EBF4FA → #F4F8FB -->
+  <section class="section section--testimonials">
+    <!-- Decorative circles -->
+    <svg class="deco-circles" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="90" stroke="#2E9CCA" stroke-width="2" fill="none"/>
+      <circle cx="100" cy="100" r="60" stroke="#1B3A6B" stroke-width="1.5" fill="none"/>
+      <circle cx="100" cy="100" r="30" stroke="#2E9CCA" stroke-width="1" fill="none"/>
+    </svg>
+    <div class="container section__center">
+      <div class="reveal">
+        <p class="section__label">Testimonios</p>
+        <div class="divider"></div>
+        <h2 class="section__title">Lo que dicen nuestros pacientes</h2>
+      </div>
+      <div class="testimonials__list">
+        <article class="testimonial-block reveal">
+          <img src="https://placehold.co/600x400?text=Foto+paciente+1" alt="Foto paciente 1 - Bastian" class="testimonial-block__photo">
+          <div class="testimonial-block__body">
+            <h3 class="testimonial-block__name">Bastian</h3>
+            <p class="testimonial-block__injury">Menisco y LCA</p>
+            <p class="testimonial-block__text">Tuvo lesión de Menisco y LCA. Se operó y nunca pudo volver a hacer lo que hacía antes. Luego de 5 meses de trabajo volvió a disfrutar de su deporte en un buen nivel de rendimiento.</p>
+            <div class="testimonial-block__stars" aria-label="5 de 5 estrellas">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-block testimonial-block--reverse reveal">
+          <img src="https://placehold.co/600x400?text=Foto+paciente+2" alt="Foto paciente 2 - Matías" class="testimonial-block__photo">
+          <div class="testimonial-block__body">
+            <h3 class="testimonial-block__name">Matías</h3>
+            <p class="testimonial-block__injury">Lesión de LCA</p>
+            <p class="testimonial-block__text">Nunca logró volver a jugar después de su cirugía. Tras 4 meses, abordamos sus déficits y puntos débiles y logró no sólo volver a jugar sino que recuperó su nivel de rendimiento.</p>
+            <div class="testimonial-block__stars" aria-label="5 de 5 estrellas">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </article>
+        <article class="testimonial-block reveal">
+          <img src="https://placehold.co/600x400?text=Foto+paciente+3" alt="Foto paciente 3 - Santiago" class="testimonial-block__photo">
+          <div class="testimonial-block__body">
+            <h3 class="testimonial-block__name">Santiago</h3>
+            <p class="testimonial-block__injury">Tendinopatía rotuliana y condromalacia</p>
+            <p class="testimonial-block__text">1 año entero sin poder hacer su deporte con normalidad y +3 años de dolor. En 5 meses de trabajo bien estructurado logró volver a jugar y disfrutar nuevamente de su deporte sin dolor.</p>
+            <div class="testimonial-block__stars" aria-label="5 de 5 estrellas">
+              <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- S6 FAQ — dark #1B3A6B -->
+  <section class="section section--faq">
+    <div class="container section__center">
+      <div class="reveal">
+        <p class="section__label">Preguntas frecuentes</p>
+        <div class="divider"></div>
+        <h2 class="section__title">Resolvemos tus dudas</h2>
+      </div>
+      <div class="faq__list">
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            ¿Qué pasa si decido esperar?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>El tiempo no va a solucionar tu problema. Los tejidos necesitan carga, la rodilla tiene que ganar tolerancia al estrés y el sistema neuromuscular recuperar su capacidad; y todo eso requiere un trabajo específico.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            ¿Cómo funciona la llamada de diagnóstico?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>Es una sesión de 15-20 minutos por Meet. No es una clase de gimnasia. Es una auditoría de tu situación: analizamos qué tipo de lesión tuviste, qué has hecho hasta ahora y qué te está frenando. Si vemos que podemos ayudarte, te contaremos cómo; si no, te diremos quién puede hacerlo.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            ¿Qué resultados puedo esperar en los primeros meses?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>Lo primero es la recuperación de la confianza. En las primeras semanas notarás una reducción de la inflamación residual y un aumento en el rango de movimiento seguro. El objetivo es que dejes de "proteger" la rodilla inconscientemente en cada movimiento cotidiano.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            ¿Por qué elegir este método y no ir a un fisioterapeuta convencional?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>La fisioterapia tradicional suele quedarse en la fase de "quitar el dolor". Nosotros, además de eso, buscamos que vuelvas a sentirte bien en tus actividades y recuperes tu rendimiento físico. Unimos la rehabilitación clínica con la preparación física y el acompañamiento mental, tratando tu rodilla como la de un atleta profesional, no como la de un paciente sedentario.</p>
+          </div>
+        </div>
+        <div class="faq-item reveal">
+          <button class="faq-item__question" aria-expanded="false">
+            ¿Necesito equipo de gimnasio profesional para empezar?
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="faq-item__answer">
+            <p>No necesariamente. Podemos adaptar las fases iniciales a lo que tengas disponible, aunque a medida que progresemos hacia la fase de potencia y retorno al deporte, te guiaremos sobre el equipamiento mínimo necesario para garantizar que tu rodilla soporte el impacto real del juego.</p>
+          </div>
+        </div>
+      </div>
+      <div class="reveal">
+        <a href="#booking" class="btn btn--white btn--large">ME INTERESA VOLVER AL DEPORTE <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- S7 Closing / CTA — gradient #2E9CCA → #1B3A6B -->
+  <section class="section section--closing">
+    <div class="container section__center">
+      <div class="closing__content">
+        <div class="reveal">
+          <p class="section__label">Es tu momento</p>
+          <div class="divider"></div>
+          <h2 class="section__title">Deja de esperar. Tu rodilla necesita acción ahora.</h2>
+        </div>
+        <div class="reveal">
+          <p class="closing__text">Si llegaste hasta esta parte es porque sabes que hay una forma más inteligente de rehabilitarte, buscas volver a pisar el campo con seguridad y dejar de sentir que tu rodilla es de cristal.</p>
+          <p class="closing__text">Las oportunidades llegan como un tren que te abre una vez la puerta para preguntarte si te subes o no. <strong>El momento perfecto no existe.</strong></p>
+          <p class="closing__text">Es simple. Tienes dos caminos:</p>
+        </div>
+        <div class="closing__options reveal">
+          <div class="option-card option-card--a">
+            <p class="option-card__label"><i class="fas fa-xmark"></i>&nbsp; Opción A</p>
+            <p class="option-card__text">Seguir intentando por tu cuenta o con rehabilitaciones genéricas, arriesgándote a una re-lesión que te retire definitivamente y te deje con secuelas de por vida.</p>
+          </div>
+          <div class="option-card option-card--b">
+            <p class="option-card__label"><i class="fas fa-check"></i>&nbsp; Opción B</p>
+            <p class="option-card__text">Tomar acción hoy, implementar un plan integral de nivel profesional y volver a competir en tu mejor versión en menos de un año.</p>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="closing__text">Deja de pensar en que lo verás más adelante. Estás perdiendo meses valiosos de tu carrera deportiva y, lo que es peor, estás permitiendo que el miedo se instale en tu cabeza cada vez que intentas correr o saltar. Ese tiempo de calidad en tu deporte no vuelve.</p>
+          <p class="closing__text">Es por eso que me gustaría invitarte a una llamada para revisar tu caso puntual, crear un plan de acción para lograr tus objetivos y opcionalmente ver si realmente puedo ayudarte.</p>
+          <p class="closing__text">Esto no es ninguna solución mágica ni una rutina de ejercicios de YouTube. Es una <strong>llamada sin coste</strong> donde vamos a aportar mucha claridad a tu proceso de regreso al alto rendimiento.</p>
+          <p class="closing__text">El objetivo es que te lleves un mapa claro de los pasos exactos que necesita tu rodilla hoy, independientemente de si decidimos trabajar juntos después o no.</p>
+          <p class="closing__text">Así que agenda tu llamada tocando el botón debajo.</p>
+        </div>
+        <div class="closing__urgency reveal">
+          <p>Si estás viendo esta página es que aún quedan cupos para la llamada.</p>
+          <p>Pero como solo hay <strong>15 al mes</strong>, pueden acabarse en cualquier momento.</p>
+          <p style="margin-top:8px;font-family:'Montserrat',sans-serif;font-weight:700;">Tienes que decidir. Haz click debajo.</p>
+        </div>
+        <p class="closing__text reveal" style="text-align:center;font-style:italic;">Espero ayudarte pronto.</p>
+        <div style="text-align:center;" class="reveal">
+          <a href="#booking" class="btn btn--primary btn--large" style="background:var(--white);color:var(--primary);">QUIERO MI SESIÓN DE DIAGNÓSTICO <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Booking / Calendar Section -->
+  <section class="section section--booking" id="booking">
+    <div class="container section__center">
+      <div class="reveal">
+        <p class="section__label">Reservá tu lugar</p>
+        <div class="divider"></div>
+        <h2 class="section__title">Agendá tu consulta inicial</h2>
+        <p class="section__subtitle" style="margin-left:auto;margin-right:auto;">Elegí el día y horario que mejor te quede para tu sesión de diagnóstico gratuita. Solo hay 15 cupos por mes.</p>
+      </div>
+      <div class="booking__iframe-wrap reveal">
+        <iframe
+          src="https://api.leadconnectorhq.com/widget/booking/JADW7hDx2FwIj9UbKT2G"
+          style="width:100%;height:700px;border:none;overflow:hidden;"
+          scrolling="no">
+        </iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2026 Ignacio Brambati &mdash; Rehabilitación deportiva de rodilla. Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // ── Navbar scroll effect ──
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
+
+    // ── Scroll reveal with Intersection Observer ──
+    const revealElements = document.querySelectorAll('.reveal');
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+
+    // ── FAQ accordion ──
+    document.querySelectorAll('.faq-item__question').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('active');
+        document.querySelectorAll('.faq-item.active').forEach(i => i.classList.remove('active'));
+        if (!isOpen) item.classList.add('active');
+        btn.setAttribute('aria-expanded', !isOpen);
+      });
+    });
+  </script>
+</body>
+</html>
